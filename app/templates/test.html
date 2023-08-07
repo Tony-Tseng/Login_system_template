@@ -1,0 +1,22 @@
+{% extends "base.html" %}  
+{% import "bootstrap/wtf.html" as wtf %}  
+  
+{% block title %}測試{% endblock %}  
+  
+{% block page_content %}
+<div class="page-header">
+ <h1>測試</h1>
+</div>
+<form class "form-horizontal" method="post" role="form">
+   {{ form.csrf_token }}
+   {{ form.hidden_tag() }}
+   {{ wtf.form_errors(form, hiddens="only") }}
+   <div class="container">
+      <div class="col-md-4">
+         {{ wtf.form_field(form.name) }}
+         {{ wtf.form_field(form.start_time, value="00:00:00") }}
+      </div>
+   </div>
+</form>
+
+{% endblock %}

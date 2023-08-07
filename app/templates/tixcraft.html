@@ -1,0 +1,37 @@
+{% extends "base.html" %}  
+{% import "bootstrap/wtf.html" as wtf %}  
+  
+{% block title %}拓元{% endblock %}  
+  
+{% block page_content %}
+<div class="page-header">
+ <h1>拓元</h1>
+</div>
+<form class "form-horizontal" method="post" role="form">
+   {{ form.csrf_token }}
+   {{ form.hidden_tag() }}
+   {{ wtf.form_errors(form, hiddens="only") }}
+   <div class="container">
+      <div class="col-md-4">
+         {{ wtf.form_field(form.ticket_number) }}
+         {{ wtf.form_field(form.start_time, value="00:00:00") }}
+         {{ wtf.form_field(form.date_mode) }}
+         {{ wtf.form_field(form.date_keyword) }}
+      </div>
+      <div class="col-md-4">
+         {{ wtf.form_field(form.area_mode) }}
+         {{ wtf.form_field(form.area_keyword_1) }}
+         {{ wtf.form_field(form.area_keyword_2) }}
+         {{ wtf.form_field(form.area_keyword_3) }}
+         {{ wtf.form_field(form.area_keyword_4) }} 
+      </div>
+      <div class="col-md-4">
+         {{ wtf.form_field(form.prebuy_keyword) }}
+         {{ wtf.form_field(form.prebuy_input) }}
+         {{ wtf.form_field(form.area_fast_mode) }}
+         {{ wtf.form_field(form.generate, button_map={'generate': 'primary'}) }}
+      </div>
+   </div>
+</form>
+
+{% endblock %}
